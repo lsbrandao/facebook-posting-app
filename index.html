@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Facebook Auth</title>
+    <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.min.css">
+    <style>
+        #profile, #logout, #feed{display: none;}
+        .container{margin-top:30px;}
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+        <a class="navbar-brand" href="index.html">Facebook Integration</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <!-- <li class="nav-item">
+            <a class="nav-link" href="#" onclick="uploadPic()">Upload Picture</a>
+            </li> -->
+        </ul>
+        <ul class="navbar-nav navbar-right">
+            <li><a id="logout" href="#" onclick="logout()">Logout</a></li>
+            <fb:login-button
+                id="fb-btn" 
+                scope="public_profile,user_posts,manage_pages,publish_pages"
+                onlogin="checkLoginState();">
+            </fb:login-button>
+        </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <h3 id="heading">Log in to view your profile</h3>
+                <div id="profile"></div>
+            </div>
+            
+            <div class="col-md">
+                <form id="photo-form">
+                <fieldset>
+                    <h3>Photo Posting</h3>
+
+                    <div class="form-group">
+                    <label for="photo-message">Message:</label>
+                    <input type="text" class="form-control" id="photo-message" 
+                    placeholder="Enter any message">
+                    </div>
+                    <div class="form-group">
+                    <label for="exampleInputPassword1">Photo URL</label>
+                    <input type="url" class="form-control" id="photo-url" placeholder="Photo URL">
+                    </div>
+                    
+                    <!-- File Input
+                    <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                    </div> -->
+                    
+                    <button id="submit-button" onclick="onFormSubmit()" class="btn btn-primary">Submit</button>
+                </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div id="feed"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
